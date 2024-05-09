@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login </title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/vendor.bundle.base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
+      <div class="main-panel">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+          <div class="row w-100 mx-0">
+            <div class="col-lg-5 mx-auto login-box">
+              <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                <div class="text-center mb-4">
+                  <span class="mdi mdi-bug mdi-48px"></span>
+                </div>
+                <h4 class="mb-2">Welcome to Bug Tracking Application</h4>
+
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex">
+                    <div class="toast-body">
+                      {{ message }}
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <h6 class="font-weight-light">Sign-in to continue</h6>
+                <form class="pt-3" action="{% url 'doLogin' %}" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <input type="email" name="email" class="form-control form-control-lg login-input" id="exampleInputEmail1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                          <input type="password" name="password" class="form-control form-control-lg login-input"  id="exampleInputPassword0" placeholder="Password">
+                          <span class="mdi mdi-eye-off login-eye" id="togglePassword0"></span>
+                          <!-- <span class="field-error">This field is required</span> -->
+                  </div>
+                  <div class="my-2 d-flex justify-content-between align-items-center">
+                    {% comment %} <div class="form-check">
+                      <label class="form-check-label text-muted">
+                        <input type="checkbox" class="form-check-input">
+                        Keep me signed in
+                      </label>
+                    </div> {% endcomment %}
+                  </div>
+                  <div class="mt-3">
+                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                  </div>
+                  <!-- <div class="mt-4 mb-2">
+                    <button type="button" class="btn btn-block btn-google auth-form-btn">
+                      <i class="mdi mdi-google mr-2"></i> Connect using Google
+                    </button>
+                  </div> -->
+                  <div class="text-center mt-4 font-weight-light">
+                    Don't have an account? <a href="{% url "register_user" %}" class="text-primary">Create One Here</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <script src="{% static 'js/vendor.bundle.base.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/password.js' %}"></script>
+</body>
+
+</html>

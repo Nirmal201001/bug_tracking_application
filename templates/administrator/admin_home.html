@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="sidebar">
+    <div class="sidebar-list">
+        <ul class="list-group">
+            {% comment %} <li class="list-group-item active">
+                <a href="{% url "admin_home" %}" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li> {% endcomment %}
+            <li class="list-group-item">
+                <a href="{% url "admin_user" %}" class="text-decoration-none">
+                    <i class="bi bi-person mr-1"></i>
+                    <span class="sidebar-list-item ">Users</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'admin_staff' %}" class="text-decoration-none">
+                    <i class="bi bi-people mr-1"></i>
+                    <span class="sidebar-list-item ">Staff</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url "view_bug" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs</span>
+                </a>
+            </li>
+            {% comment %} <li class="list-group-item">
+                <a href="admin_project.html" class="text-decoration-none">
+                    <i class="bi bi-journal-text mr-1"></i>
+                    <span class="sidebar-list-item ">Project</span>
+                </a>
+            </li> {% endcomment %}
+            {% comment %} <li class="list-group-item">
+                <a href="admin_message.html" class="text-decoration-none">
+                    <i class="mdi mdi-message-reply-text mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="collapse-container">
+        <button id="collapse-button" onclick="collapse();">
+            <!-- collapse button with left arrow -->
+            <i class="bi bi-chevron-double-left collapse-button-left"></i>
+            <i class="bi bi-chevron-double-right collapse-button-right d-none"></i>
+        </button>
+    </div>
+</div>
+<div class="content">
+</div>
+{% endblock  %}

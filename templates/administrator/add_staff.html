@@ -1,0 +1,126 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="sidebar">
+    <div class="sidebar-list">
+        <ul class="list-group">
+            {% comment %} <li class="list-group-item">
+                <a href="{% url "admin_home" %}" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li> {% endcomment %}
+            <li class="list-group-item">
+                <a href="{% url "admin_user" %}" class="text-decoration-none">
+                    <i class="bi bi-person mr-1"></i>
+                    <span class="sidebar-list-item ">Users</span>
+                </a>
+            </li>
+            <li class="list-group-item active">
+                <a href="{% url "admin_staff" %}" class="text-decoration-none">
+                    <i class="bi bi-people mr-1"></i>
+                    <span class="sidebar-list-item ">Staff</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url "view_bug" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs</span>
+                </a>
+            </li>
+            {% comment %} <li class="list-group-item">
+                <a href="admin_project.html" class="text-decoration-none">
+                    <i class="bi bi-journal-text mr-1"></i>
+                    <span class="sidebar-list-item ">Project</span>
+                </a>
+            </li> {% endcomment %}
+            {% comment %} <li class="list-group-item">
+                <a href="admin_message.html" class="text-decoration-none">
+                    <i class="mdi mdi-message-reply-text mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="collapse-container">
+        <button id="collapse-button" onclick="collapse();">
+            <!-- collapse button with left arrow -->
+            <i class="bi bi-chevron-double-left collapse-button-left"></i>
+            <i class="bi bi-chevron-double-right collapse-button-right d-none"></i>
+        </button>
+    </div>
+</div>
+
+<div class="content">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x-circle-fill"></i></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <div class="alert alert-succeaa alert-dismissible fade show" role="alert">
+    {{ message }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x-circle-fill"></i></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <h2 class="modal-title mb-4" id="exampleModalLabel">Add Staff</h2>
+    <form method="post" action="{% url "add_staff" %}">
+        {% csrf_token %}
+            <div class="modal-content"> 
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Fitst Name</label>
+                        <input type="text" name="firstname" class="form-control" id="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-form-label">Last Name</label>
+                        <input type="text" name="lastname" class="form-control" id="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-form-label">Gender</label>
+                        <select name="gender" id="gender" class="form-control border-secondary" required>
+                            <option>Select option</option>
+                            <option value="male">Male </option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="position" class="col-form-label">Position</label>
+                        <select name="position" id="position" class="form-control border-secondary" required>
+                            <option>Select option</option>
+                            <option value="tester">Tester</option>
+                            <option value="developer">Developer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Email</label>
+                        <input type="text" name="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-form-label">Password</label>
+                        <input type="text" name="password" class="form-control" id="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add Staff</button>
+                </div>
+            </div>
+    </form>
+</div>
+
+{% endblock %}

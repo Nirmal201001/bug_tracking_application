@@ -1,0 +1,103 @@
+
+<div class="sidebar">
+    <div class="sidebar-list">
+        <ul class="list-group">
+            {% if user.user_type == '1' %}
+            <!-- Admin menu items -->
+            <li class="list-group-item active">
+                <a href="{% url "admin_home" %}" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="" class="text-decoration-none">
+                    <i class="bi bi-person mr-1"></i>
+                    <span class="sidebar-list-item ">Users</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="admin_statff_details.html" class="text-decoration-none">
+                    <i class="bi bi-people mr-1"></i>
+                    <span class="sidebar-list-item ">Staff</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url "view_bug" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="admin_project.html" class="text-decoration-none">
+                    <i class="bi bi-journal-text mr-1"></i>
+                    <span class="sidebar-list-item ">Project</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="admin_message.html" class="text-decoration-none">
+                    <i class="mdi mdi-message-reply-text mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li>
+            <!-- Admin menu items -->
+
+            <!-- Staff menu items -->
+            {% elif user.user_type == '2' %}
+            <li class="list-group-item">
+                <a href="staff_overview.html" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="staff_bug_update.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs Details</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="staff_message.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li>
+            <!-- Staff menu items -->
+            {% elif user.user_type == '3' %}
+            <!-- User menu items -->
+            <li class="list-group-item">
+                <a href="user_overview.html" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="user_bug_report.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Report Bug</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="user_bug_status.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs Status</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="user_message.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li>
+            <!-- User menu items -->
+            {% endif %}
+        </ul>
+    </div>
+    <div class="collapse-container">
+        <button id="collapse-button" onclick="collapse();">
+            <!-- collapse button with left arrow -->
+            <i class="bi bi-chevron-double-left collapse-button-left"></i>
+            <i class="bi bi-chevron-double-right collapse-button-right d-none"></i>
+        </button>
+    </div>
+</div>

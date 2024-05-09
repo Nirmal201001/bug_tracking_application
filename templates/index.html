@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Dashboard - Bug Tracking Application</title>
+    <!-- base:css -->
+    <link
+      rel="stylesheet"
+      href="{%static 'css/materialdesignicons.min.css' %}"
+    />
+    <link rel="stylesheet" href="{%static 'css/vendor.bundle.base.css' %}" />
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+      <a class="navbar-brand" href="#"
+        ><img src="{% static 'media/11.svg' %}" height="45px"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse bg-white" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+        <a href="{% url 'login' %}" class="btn btn-primary py-2">Login</a>
+      </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+          <h1 class="display-1 font-weight-bold">
+            Welcome to Bug Tracking Application
+          </h1>
+          <p class="display-5 mt-3">
+            Track, manage, and resolve bugs efficiently
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- section 1 -->
+    <section class="home-section-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 heading-section">
+            <h2 class="feature-heading animated fadeInLeft">
+              Track, Fix, and Thrive: Elevate Your Development with [Application
+              Name] - Your All-in-One Bug Tracking Platform!
+            </h2>
+          </div>
+          <div class="col-md-6 image-section">
+            <img
+              src="{% static 'media/banner1.png' %}"
+              alt="Image"
+              class="img-fluid feature-img animated fadeInRight"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section 2 -->
+    <section class="home-section-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 image-section">
+            <img
+              src="{% static 'media/banner1.png' %}"
+              alt="Image"
+              class="img-fluid feature-img animated fadeInLeft"
+            />
+          </div>
+          <div class="col-md-6 heading-section d-flex justify-content-center">
+            <div class="animated fadeInRight">
+              <h2 class="feature-heading">Performant, scalable and secure</h2>
+              <p class="feature-para">
+                Our bug tracking application is designed to be performant,
+                scalable, and secure. It is built using the latest technologies
+                and best practices to ensure that your data is safe and your
+                application is always available.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    {% comment %}
+    <section class="features-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 p-4">
+            <h2>For Administrators</h2>
+            <p>Manage users, projects, and permissions</p>
+            <a href="#" class="btn btn-outline-primary">Learn More</a>
+          </div>
+          <div class="col-md-4 p-4">
+            <h2>For Developers</h2>
+            <p>Create, assign, and resolve bugs</p>
+            <a href="#" class="btn btn-outline-primary">Learn More</a>
+          </div>
+          <div class="col-md-4 p-4">
+            <h2>For End Users</h2>
+            <p>Report bugs and track their status</p>
+            <a href="#" class="btn btn-outline-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endcomment %}
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+      <p>&copy; 2024 Bug Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

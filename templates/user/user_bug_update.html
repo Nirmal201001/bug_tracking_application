@@ -1,0 +1,123 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="sidebar">
+    <div class="sidebar-list">
+        <ul class="list-group">
+            {% comment %} <li class="list-group-item ">
+                <a href=" {% url "user_home" %} " class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li> {% endcomment %}
+            <li class="list-group-item">
+                <a href=" {% url "userbugreports" %} " class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Report Bug</span>
+                </a>
+            </li>
+            <li class="list-group-item active">
+                <a href="{% url "bug_update" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs Status</span>
+                </a>
+            </li>
+            {% comment %} <li class="list-group-item">
+                <a href="user_message.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="collapse-container">
+        <button id="collapse-button" onclick="collapse();">
+            <!-- collapse button with left arrow -->
+            <i class="bi bi-chevron-double-left collapse-button-left"></i>
+            <i class="bi bi-chevron-double-right collapse-button-right d-none"></i>
+        </button>
+    </div>
+</div>
+
+<div class="content">
+    <h2 class="content-heading mb-3">Bug</h2>
+    
+    <div class="user-table mt-5">
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th> Bug ID </th>
+                    <th> Bug Title </th>
+                    <th> Bug Status </th>
+                    <th> Bug Priority </th>
+                    <th> Bug Department </th>
+                    <th> Action </th>
+                </tr> 
+            </thead>
+            <tbody>
+                {% for bug in bugs %}
+                <tr>
+                    <td>{{ bug.id }}</td>
+                    <td>{{ bug.title }}</td>
+                    <td>
+                        {% if bug.status.status %}
+                            {{ bug.status.status }}
+                        {% else %}
+                            Open
+                        {% endif %}
+                    </td>
+                    <td>{{ bug.priority }}</td>
+                    <td>{{ bug.department }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary mr-2" style="padding: 10px;" data-bs-toggle="modal" data-bs-target="#userBugModal{{i.id}}">
+                            <span class="mdi mdi-eye mb-2"></span> View
+                        </button>
+                        <div class="modal fade" id="userBugModal{{i.id}}" tabindex="-1" aria-labelledby="userBugModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="userBugModalLabel">Bug {{ bug.id }}</h1>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle-fill"></i></button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <div>
+                                            <h4 class="pb-2">Title</h4>
+                                            <input type="text" class="form-control form-control-lg login-input" name="staff_id" value="{{bug.title}}" readonly>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h4 class="pb-2">Description</h4>
+                                            <textarea class="form-control" name="description" id="description" rows="3" readonly>{{bug.description}}</textarea>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h4 class="pb-2">Priority</h4>
+                                            <input type="text" class="form-control form-control-lg login-input" name="staff_id" value="{{bug.priority}}" readonly>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h4 class="pb-2">Impact on user</h4>
+                                            <input type="text" class="form-control form-control-lg login-input" name="staff_id" value="{{bug.impact_on_user}}" readonly>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h4 class="pb-2">Department</h4>
+                                            <input type="text" class="form-control form-control-lg login-input" name="staff_id" value="{{bug.department}}" readonly>
+                                        </div>
+                                        <div class="mt-4 bug-image">
+                                            <h4 class="pb-2">Image</h4>
+                                            <img src="{{ bug.bug_image.url }}" alt="Bug Image">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>          
+</div>
+
+
+{% endblock %}

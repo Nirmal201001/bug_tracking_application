@@ -1,0 +1,72 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="sidebar">
+    <div class="sidebar-list">
+        <ul class="list-group">
+            {% comment %} <li class="list-group-item">
+                <a href="{% url "staff_home" %}" class="text-decoration-none">
+                    <i class="bi bi-house-door mr-1"></i>
+                    <span class="sidebar-list-item ">Dashboard</span>
+                </a>
+            </li> {% endcomment %}
+            <li class="list-group-item">
+                <a href="{% url "staff_bug_details" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Bugs Details</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url "update_bug_status" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Update Bug Status</span>
+                </a>
+            </li>
+            <li class="list-group-item active">
+                <a href="{% url "assign_bug" %}" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Assign Bug</span>
+                </a>
+            </li>
+            {% comment %} <li class="list-group-item">
+                <a href="staff_message.html" class="text-decoration-none">
+                    <i class="bi bi-bug mr-1"></i>
+                    <span class="sidebar-list-item ">Message</span>
+                </a>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="collapse-container">
+        <button id="collapse-button" onclick="collapse();">
+            <!-- collapse button with left arrow -->
+            <i class="bi bi-chevron-double-left collapse-button-left"></i>
+            <i class="bi bi-chevron-double-right collapse-button-right d-none"></i>
+        </button>
+    </div>
+</div>
+
+<div class="content">
+    <h2 class="content-heading mb-3">Assign Bug to Developer</h2>
+    <div class="user-table mt-5">
+        <form method="POST" action="{% url 'assign_bug' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="bug_status">Enter bug id</label>
+                <input type="text" class="form-control" name="bug_id" id="bug_id" placeholder="Enter bug id">
+            </div>
+            
+            <div class="form-group">
+                <label for="bug_status">Select developer to assigne bug</label>
+                <select class="form-control" id="developer" name="developer">
+                    {% for staff in developers %}
+                        <option value="{{ staff.id }}">{{ staff.admin.first_name }} {{ staff.admin.last_name }}</option>
+                    {% endfor %}
+                </select>
+
+            <button type="submit" class="btn btn-primary mt-3">Update</button>
+        </form>
+    </div>          
+</div>
+
+
+{% endblock %}
